@@ -287,8 +287,22 @@ const WallCalendar = () => {
 
       <div className="w-full max-w-lg font-sans perspective-distant">
 
+        <div className="relative pointer-events-none flex justify-center" style={{ height: 72, zIndex: 40 }}>
+          <svg width="100%" height="72" style={{ position: 'absolute', top: 0, left: 0, overflow: 'visible' }}>
+            <line x1="50%" y1="28" x2="8%" y2="70" stroke="rgba(0,0,0,0.15)" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="50%" y1="28" x2="92%" y2="70" stroke="rgba(0,0,0,0.15)" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="50%" y1="28" x2="8%" y2="70" stroke="#b0b2b6" strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="50%" y1="28" x2="92%" y2="70" stroke="#b0b2b6" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ width: 22, height: 9, background: 'linear-gradient(180deg, #e4e4e7 0%, #a1a1aa 100%)', borderRadius: 5, boxShadow: '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5)' }} />
+            <div style={{ width: 7, height: 7, background: 'linear-gradient(180deg, #a1a1aa, #71717a)', }} />
+            <div style={{ width: 16, height: 12, border: '3.5px solid #71717a', borderTop: 'none', borderRadius: '0 0 8px 8px', marginTop: -1, boxShadow: '1px 2px 3px rgba(0,0,0,0.3), inset 0 -1px 0 rgba(255,255,255,0.15)' }} />
+          </div>
+        </div>
+
         <div className="relative z-30 pointer-events-none -mb-2 mx-6">
-          <div className="h-2.5 rounded-full shadow-lg bg-gradient-to-b from-gray-300 via-gray-500 to-gray-400" />
+          <div className="h-2.5 rounded-full shadow-lg bg-linear-to-b from-gray-300 via-gray-500 to-gray-400" />
           <div className="absolute -top-3 inset-x-0 flex justify-evenly px-6">
             {Array.from({ length: 11 }).map((_, i) => (
               <div
@@ -360,8 +374,9 @@ const WallCalendar = () => {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          className="bg-white shadow-2xl rounded-xl overflow-hidden touch-none origin-top"
+          className="bg-white rounded-xl overflow-hidden touch-none origin-top"
           style={{
+            boxShadow: '6px 12px 40px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.15)',
             transform: `translate3d(${dragX}px, ${dragY}px, ${isDragging ? 50 : 0}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) rotateZ(${rotationZ}deg)`,
             transition: isDragging || skipTransition ? 'none' : 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), clip-path 0s',
             clipPath: isTearing || dragY > 80 ? TORN_EDGE_CLIP_PATH : 'none',

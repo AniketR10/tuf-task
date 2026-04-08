@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wall Calendar
 
-## Getting Started
+An interactive wall calendar built with Next.js and Tailwind CSS that looks and feels like a real physical calendar hanging on a wall.
 
-First, run the development server:
+## Features
+
+- **Tear-off pages** - drag the photo section downward to tear off the current month and reveal the next one, just like a real wall calendar
+- **Month navigation** - arrow buttons to flip between months with the same tear animation
+- **Notes per date** - click any day to add a pinned sticky note; saved notes appear in the top-right corner
+- **Monthly memo** - a notes section on the left of each month for general purpose
+- **Realistic UI** - metal hook, hanging wire, spiral coil binding, wall background, and an offset shadow to show depth
+
+## Tech choices
+
+| What | Why |
+|------|-----|
+| Next.js (App Router) | Simple file-based routing, `next/image` for optimised Unsplash photos |
+| Tailwind CSS | Utility classes keep all styling co-located with the component |
+| Plain React state | No external state library needed for a single-page UI |
+| localStorage | Persists notes across page refreshes without a backend |
+
+## Run locally
+
+**Requirements:** Node.js 18+
 
 ```bash
+# Install dependencies
+npm install
+
+# Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+  page.tsx          # Root pag
+components/
+  Calendar.tsx      # All calendar logic and UI lives here
+```
