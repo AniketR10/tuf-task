@@ -2,7 +2,7 @@ import WallCalendar from "@/components/Calendar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 p-4 sm:p-8">
+    <main className="h-screen overflow-hidden flex items-center justify-center p-4">
       <WallCalendar />
     </main>
   );
